@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-06-16T10:03:20.333+00:00",
+  "status": 403,
+  "error": "Forbidden",
+  "path": "/mailableCheck"
+}

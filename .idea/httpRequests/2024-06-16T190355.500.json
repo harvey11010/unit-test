@@ -1,0 +1,5 @@
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "could not execute statement [Data truncated for column 'status' at row 1] [/* insert for com.team13.fantree.entity.User */insert into users (created_at,email,headline,modified_at,name,password,refresh_token,status,status_update,username) values (?,?,?,?,?,?,?,?,?,?)]",
+  "httpStatus": "INTERNAL_SERVER_ERROR"
+}

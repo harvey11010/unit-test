@@ -1,0 +1,44 @@
+## Variables
+@username = MODUtripleSS1
+@password = 1234
+
+
+@contentId = 9
+@contentType_post = post
+@contentType_comment = comment
+
+
+
+###  로그인
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{password}}"
+}
+
+> {% client.global.set("Authorization", response.headers.valueOf("Authorization")); %}
+
+
+
+
+### 좋아요 작성 - post
+POST http://localhost:8080/likes/{{contentId}}?contentType={{contentType_post}}
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+
+
+### 좋아요 작성 - comment
+POST http://localhost:8080/likes/{{contentId}}?contentType={{contentType_comment}}
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+
+
+### 좋아요 취소
+DELETE http://localhost:8080/likes/2
+Authorization:{{Authorization}}
+Content-Type: application/json
+

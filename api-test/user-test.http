@@ -1,0 +1,130 @@
+## Variables
+@username = fltnsah1234511
+@password = test@1234AAAA1
+@name = testname
+@email = test@gmail.com
+@headline = 화이팅
+
+@edit_name = editTestUsername12
+@edit_password = editPassword@@@@@
+@edit_headline = editHeadline2
+
+@authNum = 74569
+
+
+### 유정 등록
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{password}}",
+  "name": "{{name}}",
+  "email": "{{email}}",
+  "headline": "{{headline}}"
+}
+
+
+
+
+###  로그인
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{password}}"
+}
+
+> {% client.global.set("Authorization", response.headers.valueOf("Authorization")),
+ client.global.set("Refresh_token", response.headers.valueOf("Refresh_token")); %}
+
+
+
+
+### 인증 유저 변환
+PUT http://localhost:8080/mailableCheck
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+{
+  "authNum": "{{authNum}}"
+}
+
+
+
+### 유저 조회
+GET http://localhost:8080/users
+Authorization:{{Authorization}}
+
+
+
+
+### 유저 프로필 수정
+PUT http://localhost:8080/users
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+{
+  "name": "{{edit_name}}",
+  "headline": "{{edit_headline}}"
+}
+
+
+
+### 유저 프로필 수정 2 password
+PUT http://localhost:8080/users
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+{
+  "password": "{{password}}",
+  "newPassword": "{{edit_password}}"
+}
+
+
+
+
+
+### 유저 토큰 재발급
+GET http://localhost:8080/users/refresh
+Authorization:{{Authorization}}
+Refresh_token:{{Refresh_token}}
+Content-Type: application/json
+
+
+
+
+
+
+### 유저 로그아웃
+POST http://localhost:8080/users/logout
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+
+
+
+###  로그인
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{edit_password}}"
+}
+
+> {% client.global.set("Authorization", response.headers.valueOf("Authorization")),
+        client.global.set("Refresh_token", response.headers.valueOf("Refresh_token")); %}
+
+
+
+
+### 유저 탈퇴
+DELETE http://localhost:8080/users
+Authorization:{{Authorization}}
+Content-Type: application/json
+
+{
+  "password": "{{edit_password}}"
+}
